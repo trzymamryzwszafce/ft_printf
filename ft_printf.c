@@ -3,38 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: szmadeja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: szmadeja <szmadeja@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 19:22:31 by szmadeja          #+#    #+#             */
-/*   Updated: 2025/01/08 15:00:24 by mamichal         ###   ########.fr       */
+/*   Created: 2025/01/08 23:35:37 by szmadeja          #+#    #+#             */
+/*   Updated: 2025/01/09 00:14:09 by szmadeja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+int	ft_char(char c)
+{
+	return (write(1, &c, 1));
+}
 
-int ft_format(char letter, va_list ap)
+int	ft_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i]);
+		i++;
+	}
+	return (str);
+}
+
+int	ft_format(char letter, va_list ap)
 {
     int i;
 
     i = 0;
     if (letter == 'c')
-        i += ft_char(va_arg(ap, int));
+        i += ft_char(va_arg(ap, char));
     else if (letter == 's')
-        i += ft_str(va_arg(ap, int));
+        i += ft_str(va_arg(ap, char *));
     else if (letter == 'p')
-        i += ft_ptr(va_arg(ap, int));
+        i += ft_ptr(va_arg(ap, void *));
     else if (letter == 'd')
-        i += ft_dec(va_arg(ap,int));
+        i += ft_dec(va_arg(ap, int));
     else if (letter == 'i')
         i += ft_int(va_arg(ap, int));
     else if (letter == 'u')
-        i += ft_udec(va_arg(ap, int));
+        i += ft_udec(va_arg(ap, unsigned int));
     else if (letter == 'x')
-        i += ft_lhex(va_arg(ap, int));
+        i += ft_lhex(va_arg(ap, unsigned int));
     else if (letter == 'X')
-        i += ft_uhex(va_arg(ap, int));
+        i += ft_uhex(va_arg(ap, unsigned int));
     else if (letter == '%')
-        i += ft_per(va_arg(ap, int));
+        i += ft_char('%');
     else
         i += write(1, &letter, 1);
     return (i);
