@@ -6,7 +6,7 @@
 /*   By: szmadeja <szmadeja@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:35:37 by szmadeja          #+#    #+#             */
-/*   Updated: 2025/01/11 02:42:51 by szmadeja         ###   ########.fr       */
+/*   Updated: 2025/01/11 03:06:04 by szmadeja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_str(char *str)
 {
 	int	i;
 
+	if (str == NULL)
+		return (0);
 	i = 0;
 	while (str[i])
 	{
@@ -32,6 +34,8 @@ int	ft_str(char *str)
 
 int	ft_ptr(void *ptr)
 {
+	if (ptr == NULL)
+		return (ft_str("(nil)"));
 	ft_char('0');
 	ft_char('x');
 	return (ft_hexptr((unsigned long)ptr) + 2);
