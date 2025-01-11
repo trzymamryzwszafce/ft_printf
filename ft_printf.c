@@ -6,7 +6,7 @@
 /*   By: szmadeja <szmadeja@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:35:37 by szmadeja          #+#    #+#             */
-/*   Updated: 2025/01/11 03:06:04 by szmadeja         ###   ########.fr       */
+/*   Updated: 2025/01/11 03:18:09 by szmadeja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_str(char *str)
 	int	i;
 
 	if (str == NULL)
-		return (0);
+		return (ft_str("(null)"));
 	i = 0;
 	while (str[i])
 	{
